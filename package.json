@@ -1,0 +1,16 @@
+{
+  "name": "module-federation-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "pnpm --filter current-* --parallel start",
+    "serve": "pnpm --filter current-* --parallel serve",
+    "clean": "pnpm --filter current-* --parallel clean",
+    "build": "pnpm --filter current-* --parallel build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
