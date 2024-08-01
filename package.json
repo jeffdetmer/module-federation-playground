@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "pnpm --filter current-* --parallel start",
-    "serve": "pnpm --filter current-* --parallel serve",
-    "clean": "pnpm --filter current-* --parallel clean",
-    "build": "pnpm --filter current-* --parallel build"
+    "check": "pnpm --filter mfe2.0-* --parallel check",
+    "dev": "pnpm --filter mfe2.0-* --parallel dev",
+    "format": "pnpm --filter mfe2.0-* --parallel format",
+    "build": "pnpm --filter mfe2.0-* --parallel build",
+    "preview": "pnpm --filter mfe2.0-* --parallel preview"
   },
   "keywords": [],
   "author": "",
