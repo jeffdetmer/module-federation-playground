@@ -1,4 +1,5 @@
 import { Datadog } from '@/components/Datadog';
+import { NavBar } from '@/components/NavBar';
 import {
   ChakraBaseProvider,
   theme as chakraTheme,
@@ -8,7 +9,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Outlet, createRootRoute } from '@tanstack/react-router';
 import { Suspense, lazy } from 'react';
-import { NavBar } from '@/components/NavBar';
 
 const TanStackRouterDevtools =
   process.env.NODE_ENV === 'production'

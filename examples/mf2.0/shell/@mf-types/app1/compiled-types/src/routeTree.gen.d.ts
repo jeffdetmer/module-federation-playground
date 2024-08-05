@@ -1,4 +1,4 @@
-import { Route as rootRoute } from './routes/__root';
+import type { Route as rootRoute } from './routes/__root';
 declare const DashboardLazyImport: import('@tanstack/react-router').Route<
   import('@tanstack/react-router').RootRoute<
     {},
@@ -158,4 +158,3 @@ export declare const routeTree: import('@tanstack/react-router').RootRoute<
     >;
   }
 >;
-export {};

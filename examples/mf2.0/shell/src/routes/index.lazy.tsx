@@ -1,4 +1,3 @@
-import { createLazyFileRoute } from '@tanstack/react-router';
 import {
   Box,
   Button,
@@ -9,6 +8,7 @@ import {
   Stack,
   StackDivider,
 } from '@chakra-ui/react';
+import { createLazyFileRoute } from '@tanstack/react-router';
 import axios from 'axios';
 
 import { useEffect, useState } from 'react';

@@ -6,10 +6,12 @@
   "vcs": {
     "enabled": true,
     "clientKind": "git",
-    "useIgnoreFile": true
+    "useIgnoreFile": true,
+    "defaultBranch": "main"
   },
   "formatter": {
-    "indentStyle": "space"
+    "indentStyle": "space",
+    "lineEnding": "lf"
   },
   "javascript": {
     "formatter": {

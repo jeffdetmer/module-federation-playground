@@ -1,9 +1,15 @@
-import { resolve } from 'node:path';
 import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 import { defineConfig } from '@rsbuild/core';
-import { pluginLightningcss } from '@rsbuild/plugin-lightningcss';
+import { pluginAssetsRetry } from '@rsbuild/plugin-assets-retry';
+import { pluginBasicSsl } from '@rsbuild/plugin-basic-ssl';
+import { pluginImageCompress } from '@rsbuild/plugin-image-compress';
 import { pluginReact } from '@rsbuild/plugin-react';
+import { pluginStyledComponents } from '@rsbuild/plugin-styled-components';
+import { pluginSvgr } from '@rsbuild/plugin-svgr';
+import { pluginTypeCheck } from '@rsbuild/plugin-type-check';
 import { TanStackRouterRspack } from '@tanstack/router-plugin/rspack';
+import { pluginOpenGraph } from 'rsbuild-plugin-open-graph';
+import { pluginReactInspector } from 'rsbuild-plugin-react-inspector';
 import { dependencies } from './package.json';
 
 export default defineConfig({
@@ -15,12 +21,13 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true,
+    compress: true,
   },
   dev: {
     hmr: true,
     liveReload: true,
     progressBar: true,
-    assetPrefix: 'http://localhost:3000',
+    assetPrefix: 'https://localhost:3000',
   },
   output: {
     cleanDistPath: true,
@@ -37,12 +44,95 @@ export default defineConfig({
       algorithm: 'sha512',
     },
   },
+  environments: {
+    dev: {
+      output: {
+        distPath: {
+          root: 'dist-dev'
+        },
+        assetPrefix: 'https://ui-console-login.kw-dev-us-east1.kw.com/',
+      },
+      performance: {
+        preconnect: ['https://console-dev.command.kw.com'],
+        prefetch: {
+          type: 'async-chunks',
+        },
+        preload: {
+          type: 'async-chunks'
+        },
+      },
+      plugins: [
+        pluginOpenGraph({
+          title: 'Shell',
+          type: 'website',
+          url: 'https://console-dev.command.kw.com',
+          description: 'shell for command',
+        }),
+        pluginReactInspector(),
+      ],
+    },
+    qa: {
+      output: {
+        distPath: {
+          root: 'dist-qa'
+        },
+        assetPrefix: 'https://ui-console-login.kw-qa-us-east1.kw.com/',
+      },
+      performance: {
+        preconnect: ['https://console-qa.command.kw.com'],
+        prefetch: {
+          type: 'async-chunks',
+        },
+        preload: {
+          type: 'async-chunks'
+        },
+        removeConsole: ['log', 'warn', 'info']
+      },
+      plugins: [
+        pluginOpenGraph({
+          title: 'Shell',
+          type: 'website',
+          url: 'https://console-qa.command.kw.com',
+          description: 'shell for command',
+        }),
+      ],
+    },
+    prod: {
+      output: {
+        distPath: {
+          root: 'dist-prod',
+        },
+        assetPrefix: 'https://ui-console-login.kw-prod-us-east1.kw.com/',
+      },
+      performance: {
+        preconnect: ['https://console.command.kw.com'],
+        prefetch: {
+          type: 'async-chunks',
+        },
+        preload: {
+          type: 'async-chunks'
+        },
+        removeConsole: ['log', 'warn', 'info',]
+      },
+      plugins: [
+        pluginOpenGraph({
+          title: 'Shell',
+          type: 'website',
+          url: 'https://console.command.kw.com',
+          description: 'shell for command',
+        }),
+      ],
+    },
+  },
+  performance: {
+    bundleAnalyze: process.env.BUNDLE_ANALYZE ? {
+      analyzerMode: 'server',
+      openAnalyzer: true,
+      generateStatsFile: true,
+    }: {}
+  },
   tools: {
-    rspack: (config, { appendPlugins }) => {
-      config.resolve ||= {};
-      config.resolve.alias ||= {};
-      config.resolve.alias['@'] = resolve(__dirname, 'src');
-
+    rspack: (_config, { appendPlugins }) => {
       appendPlugins([
         new ModuleFederationPlugin({
           name: 'shell',
@@ -88,6 +178,15 @@ export default defineConfig({
         overlay: true,
       },
     }),
-    pluginLightningcss(),
+    pluginSvgr(),
+    pluginTypeCheck(),
+    pluginAssetsRetry(),
+    pluginStyledComponents({
+      namespace: 'shell',
+      meaninglessFileNames: ['index', 'styles'],
+      pure: true,
+    }),
+    pluginImageCompress(),
+    pluginBasicSsl(),
   ],
 });
