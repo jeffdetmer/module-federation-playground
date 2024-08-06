@@ -44,10 +44,10 @@ export default defineConfig({
       },
       plugins: [
         pluginOpenGraph({
-          title: 'Shell',
+          title: 'Login',
           type: 'website',
           url: 'https://console-dev.command.kw.com',
-          description: 'shell for command',
+          description: 'login for command',
         }),
         pluginReactInspector(),
       ],
@@ -61,10 +61,10 @@ export default defineConfig({
       },
       plugins: [
         pluginOpenGraph({
-          title: 'Shell',
+          title: 'Login',
           type: 'website',
           url: 'https://console-qa.command.kw.com',
-          description: 'shell for command',
+          description: 'login for command',
         }),
       ],
     },
@@ -77,10 +77,10 @@ export default defineConfig({
       },
       plugins: [
         pluginOpenGraph({
-          title: 'Shell',
+          title: 'Login',
           type: 'website',
           url: 'https://console.command.kw.com',
-          description: 'shell for command',
+          description: 'login for command',
         }),
       ],
     },
@@ -130,7 +130,7 @@ export default defineConfig({
     pluginTypeCheck(),
     pluginAssetsRetry(),
     pluginStyledComponents({
-      namespace: 'shell',
+      namespace: 'login',
       meaninglessFileNames: ['index', 'styles'],
       pure: true,
     }),

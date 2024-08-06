@@ -49,7 +49,7 @@ export default defineConfig({
         distPath: {
           root: 'dist-dev',
         },
-        assetPrefix: 'https://ui-console-login.kw-dev-us-east1.kw.com/',
+        assetPrefix: 'https://ui-console-shell.kw-dev-us-east1.kw.com/',
       },
       performance: {
         preconnect: ['https://console-dev.command.kw.com'],
@@ -69,7 +69,7 @@ export default defineConfig({
         distPath: {
           root: 'dist-qa',
         },
-        assetPrefix: 'https://ui-console-login.kw-qa-us-east1.kw.com/',
+        assetPrefix: 'https://ui-console-shell.kw-qa-us-east1.kw.com/',
       },
       performance: {
         preconnect: ['https://console-qa.command.kw.com'],
@@ -89,7 +89,7 @@ export default defineConfig({
         distPath: {
           root: 'dist-prod',
         },
-        assetPrefix: 'https://ui-console-login.kw-prod-us-east1.kw.com/',
+        assetPrefix: 'https://ui-console-shell.kw-prod-us-east1.kw.com/',
       },
       performance: {
         preconnect: ['https://console.command.kw.com'],

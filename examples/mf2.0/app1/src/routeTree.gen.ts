@@ -18,6 +18,7 @@ import { Route as rootRoute } from './routes/__root';
 
 const DashboardLazyImport = createFileRoute('/dashboard')();
 const IndexLazyImport = createFileRoute('/')();
+const CommandApp1LazyImport = createFileRoute('/command/app1')();
 
 // Create/Update Routes
 
@@ -30,6 +31,11 @@ const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route));
+
+const CommandApp1LazyRoute = CommandApp1LazyImport.update({
+  path: '/command/app1',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/command/app1.lazy').then((d) => d.Route));
 
 // Populate the FileRoutesByPath interface
 
@@ -49,6 +55,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardLazyImport;
       parentRoute: typeof rootRoute;
     };
+    '/command/app1': {
+      id: '/command/app1';
+      path: '/command/app1';
+      fullPath: '/command/app1';
+      preLoaderRoute: typeof CommandApp1LazyImport;
+      parentRoute: typeof rootRoute;
+    };
   }
 }
 
@@ -57,6 +70,7 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   DashboardLazyRoute,
+  CommandApp1LazyRoute,
 });
 
 /* prettier-ignore-end */
@@ -68,7 +82,8 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/dashboard"
+        "/dashboard",
+        "/command/app1"
       ]
     },
     "/": {
@@ -76,6 +91,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/dashboard": {
       "filePath": "dashboard.lazy.tsx"
+    },
+    "/command/app1": {
+      "filePath": "command/app1.lazy.tsx"
     }
   }
 }

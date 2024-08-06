@@ -7,7 +7,8 @@
     "check": "biome check --write",
     "dev": "rsbuild dev --environment dev",
     "format": "biome format --write",
-    "preview": "rsbuild preview"
+    "preview": "rsbuild preview",
+    "lint": "biome lint --error-on-warnings --write"
   },
   "dependencies": {
     "@chakra-ui/react": "2.8.2",

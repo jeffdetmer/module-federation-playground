@@ -1,4 +1,3 @@
-import App1Application from '@remote/app1/router';
 import { createLazyFileRoute } from '@tanstack/react-router';
 
 export const Route = createLazyFileRoute('/command/app1')({
@@ -6,5 +5,5 @@ export const Route = createLazyFileRoute('/command/app1')({
 });
 
 const App1 = () => {
-  return <App1Application />;
+  return <div>Hello App1 /command/app1!</div>;
 };
