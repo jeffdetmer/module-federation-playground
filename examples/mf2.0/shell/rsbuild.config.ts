@@ -1,7 +1,6 @@
 import { ModuleFederationPlugin } from '@module-federation/enhanced/rspack';
 import { defineConfig } from '@rsbuild/core';
 import { pluginAssetsRetry } from '@rsbuild/plugin-assets-retry';
-import { pluginBasicSsl } from '@rsbuild/plugin-basic-ssl';
 import { pluginImageCompress } from '@rsbuild/plugin-image-compress';
 import { pluginReact } from '@rsbuild/plugin-react';
 import { pluginStyledComponents } from '@rsbuild/plugin-styled-components';
@@ -27,7 +26,7 @@ export default defineConfig({
     hmr: true,
     liveReload: true,
     progressBar: true,
-    assetPrefix: 'https://localhost:3000',
+    assetPrefix: 'http://localhost:3000',
   },
   output: {
     cleanDistPath: true,
@@ -48,18 +47,12 @@ export default defineConfig({
     dev: {
       output: {
         distPath: {
-          root: 'dist-dev'
+          root: 'dist-dev',
         },
         assetPrefix: 'https://ui-console-login.kw-dev-us-east1.kw.com/',
       },
       performance: {
         preconnect: ['https://console-dev.command.kw.com'],
-        prefetch: {
-          type: 'async-chunks',
-        },
-        preload: {
-          type: 'async-chunks'
-        },
       },
       plugins: [
         pluginOpenGraph({
@@ -74,19 +67,13 @@ export default defineConfig({
     qa: {
       output: {
         distPath: {
-          root: 'dist-qa'
+          root: 'dist-qa',
         },
         assetPrefix: 'https://ui-console-login.kw-qa-us-east1.kw.com/',
       },
       performance: {
         preconnect: ['https://console-qa.command.kw.com'],
-        prefetch: {
-          type: 'async-chunks',
-        },
-        preload: {
-          type: 'async-chunks'
-        },
-        removeConsole: ['log', 'warn', 'info']
+        removeConsole: ['log', 'warn', 'info'],
       },
       plugins: [
         pluginOpenGraph({
@@ -106,13 +93,7 @@ export default defineConfig({
       },
       performance: {
         preconnect: ['https://console.command.kw.com'],
-        prefetch: {
-          type: 'async-chunks',
-        },
-        preload: {
-          type: 'async-chunks'
-        },
-        removeConsole: ['log', 'warn', 'info',]
+        removeConsole: ['log', 'warn', 'info'],
       },
       plugins: [
         pluginOpenGraph({
@@ -125,11 +106,13 @@ export default defineConfig({
     },
   },
   performance: {
-    bundleAnalyze: process.env.BUNDLE_ANALYZE ? {
-      analyzerMode: 'server',
-      openAnalyzer: true,
-      generateStatsFile: true,
-    }: {}
+    bundleAnalyze: process.env.BUNDLE_ANALYZE
+      ? {
+          analyzerMode: 'server',
+          openAnalyzer: true,
+          generateStatsFile: true,
+        }
+      : {},
   },
   tools: {
     rspack: (_config, { appendPlugins }) => {
@@ -145,14 +128,17 @@ export default defineConfig({
           shared: {
             react: {
               singleton: true,
+              version: dependencies.react,
               requiredVersion: dependencies.react,
             },
             'react-dom': {
               singleton: true,
+              version: dependencies['react-dom'],
               requiredVersion: dependencies['react-dom'],
             },
             'react-is': {
               singleton: true,
+              version: dependencies['react-is'],
               requiredVersion: dependencies['react-is'],
             },
           },
@@ -187,6 +173,6 @@ export default defineConfig({
       pure: true,
     }),
     pluginImageCompress(),
-    pluginBasicSsl(),
+    // pluginBasicSsl(),
   ],
 });

@@ -1,6 +1,6 @@
 import { CAN_USE_DOM } from './constants';
 
-export default function getQueryParameter(_name: string, _url: string) {
+const getQueryParameter = (_name: string, _url: string) => {
   let url = _url;
   if (!url && CAN_USE_DOM) {
     url = window.location.href;
@@ -15,4 +15,6 @@ export default function getQueryParameter(_name: string, _url: string) {
     return '';
   }
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
+};
+
+export { getQueryParameter };

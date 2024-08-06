@@ -13,7 +13,7 @@ import { COOKIE_DOMAIN, SESSION_NAME } from './constants';
  * Save a OL session to storage and include the expires_at data
  * @param {object} session
  */
-export default function saveUserSession(
+const saveUserSession = (
   session: {
     access_token: string;
     session_token: string;
@@ -30,7 +30,7 @@ export default function saveUserSession(
     | 'none'
     | 'None'
     | undefined = 'lax',
-) {
+) => {
   // Retrieve the number of seconds to expiration
   const secondsToExpiration = session.expires_in;
   // Remove a grace period of 5 minutes and Convert it to milliseconds
@@ -45,4 +45,6 @@ export default function saveUserSession(
     sameSite,
     secure: sameSite === 'none',
   });
-}
+};
+
+export { saveUserSession };

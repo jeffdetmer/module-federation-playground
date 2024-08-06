@@ -10,7 +10,7 @@ import { CAN_USE_DOM, COOKIE_DOMAIN, LOGOUT_URL } from './constants';
  * Log the user out and return the login page
  * @param {string} redirectTo
  */
-export default async function logout(redirectTo: string) {
+const logout = async (redirectTo: string) => {
   const accessToken = JSON.parse(
     Cookies.get('command_session') ?? '',
   )?.access_token;
@@ -72,4 +72,6 @@ export default async function logout(redirectTo: string) {
 
     window.location = redirectUrl as unknown as Location;
   }
-}
+};
+
+export { logout };

@@ -8,7 +8,7 @@ export const API_BASE_URL = {
   qa: 'https://qa-kong.command-api.kw.com',
   production: 'https://kong.command-api.kw.com',
 };
-export const COOKIE_DOMAIN = '.kw.com';
+export const COOKIE_DOMAIN = 'localhost';
 export const SESSION_NAME = 'command_session';
 export const USER_DETAILS = 'user_details';
 export const CAN_USE_DOM =

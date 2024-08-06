@@ -38,7 +38,7 @@ export default defineConfig({
     dev: {
       output: {
         distPath: {
-          root: 'dist-dev'
+          root: 'dist-dev',
         },
         assetPrefix: 'https://ui-console-login.kw-dev-us-east1.kw.com/',
       },
@@ -55,7 +55,7 @@ export default defineConfig({
     qa: {
       output: {
         distPath: {
-          root: 'dist-qa'
+          root: 'dist-qa',
         },
         assetPrefix: 'https://ui-console-login.kw-qa-us-east1.kw.com/',
       },
@@ -87,7 +87,6 @@ export default defineConfig({
   },
   tools: {
     rspack: (_config, { appendPlugins }) => {
-
       appendPlugins([
         new ModuleFederationPlugin({
           name: 'app1',

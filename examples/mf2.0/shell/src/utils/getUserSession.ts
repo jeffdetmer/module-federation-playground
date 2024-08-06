@@ -41,4 +41,4 @@ const getUserSession = (): UserSession => {
   };
 };
 
-export default getUserSession;
+export { getUserSession, type UserSession };
