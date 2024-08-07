@@ -5,11 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "pnpm --filter mfe2.0-* --parallel dev",
+    "dev": "tsx scripts/run.ts",
     "format": "pnpm --filter mfe2.0-* --parallel format",
     "build": "pnpm --filter mfe2.0-* --parallel build",
     "preview": "pnpm --filter mfe2.0-* --parallel preview",
     "lint": "pnpm --filter mfe2.0-* --parallel lint"
+  },
+  "devDependencies": {
+    "@types/node": "22.1.0",
+    "tsx": "4.16.5",
+    "typescript": "5.5.4"
   },
   "keywords": [],
   "author": "",

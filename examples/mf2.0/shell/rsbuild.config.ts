@@ -124,6 +124,7 @@ export default defineConfig({
           },
           remotes: {
             '@remote/app1': 'app1@http://localhost:3001/mf-manifest.json',
+            '@remote/app2': 'app2@http://localhost:3002/mf-manifest.json',
           },
           shared: {
             react: {

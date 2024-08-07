@@ -1,69 +1,69 @@
-import { Datadog } from '@/components/Datadog';
-import { NavBar } from '@/components/NavBar';
+import { Datadog } from "@/components/Datadog";
+import { NavBar } from "@/components/NavBar";
 import {
-  ChakraBaseProvider,
-  theme as chakraTheme,
-  extendBaseTheme,
-} from '@chakra-ui/react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { Outlet, createRootRoute } from '@tanstack/react-router';
-import { Suspense, lazy } from 'react';
+	ChakraBaseProvider,
+	theme as chakraTheme,
+	extendBaseTheme,
+} from "@chakra-ui/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Outlet, createRootRoute } from "@tanstack/react-router";
+import { Suspense, lazy } from "react";
 
 const TanStackRouterDevtools =
-  process.env.NODE_ENV === 'production'
-    ? () => null
-    : lazy(() =>
-        import('@tanstack/router-devtools').then((res) => ({
-          default: res.TanStackRouterDevtools,
-        })),
-      );
+	process.env.NODE_ENV === "production"
+		? () => null
+		: lazy(() =>
+				import("@tanstack/router-devtools").then((res) => ({
+					default: res.TanStackRouterDevtools,
+				})),
+			);
 
 const queryClient = new QueryClient();
 
 const {
-  Button,
-  Container,
-  Tabs,
-  Breadcrumb,
-  Divider,
-  Drawer,
-  Form,
-  Input,
-  Spinner,
+	Button,
+	Container,
+	Tabs,
+	Breadcrumb,
+	Divider,
+	Drawer,
+	Form,
+	Input,
+	Spinner,
 } = chakraTheme.components;
 const theme = extendBaseTheme({
-  components: {
-    Button,
-    Container,
-    Tabs,
-    Breadcrumb,
-    Divider,
-    Drawer,
-    Form,
-    Input,
-    Spinner,
-  },
+	components: {
+		Button,
+		Container,
+		Tabs,
+		Breadcrumb,
+		Divider,
+		Drawer,
+		Form,
+		Input,
+		Spinner,
+	},
 });
 
 const Route = createRootRoute({
-  component: () => (
-    <>
-      <Datadog>
-        <QueryClientProvider client={queryClient}>
-          <ChakraBaseProvider theme={theme}>
-            <NavBar />
-            <Outlet />
-          </ChakraBaseProvider>
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
-        <Suspense>
-          <TanStackRouterDevtools />
-        </Suspense>
-        <div id="title">Environment: {process.env.NODE_ENV}</div>
-      </Datadog>
-    </>
-  ),
+	component: () => (
+		<>
+			<Datadog>
+				<QueryClientProvider client={queryClient}>
+					<ChakraBaseProvider theme={theme}>
+						<NavBar />
+						<Outlet />
+					</ChakraBaseProvider>
+					<ReactQueryDevtools initialIsOpen={false} />
+				</QueryClientProvider>
+				<Suspense>
+					<TanStackRouterDevtools />
+				</Suspense>
+				<div id="title">Environment: {process.env.NODE_ENV}</div>
+			</Datadog>
+		</>
+	),
 });
 
 export { Route };

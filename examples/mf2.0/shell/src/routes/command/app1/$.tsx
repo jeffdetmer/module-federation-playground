@@ -1,7 +1,7 @@
 import App1Application from '@remote/app1/router';
-import { createLazyFileRoute } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 
-export const Route = createLazyFileRoute('/command/app1')({
+export const Route = createFileRoute('/command/app1/$')({
   component: () => <App1 />,
 });
 

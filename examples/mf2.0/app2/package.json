@@ -1,0 +1,53 @@
+{
+  "name": "mfe2.0-app2",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "rsbuild build",
+    "check": "biome check --write",
+    "dev": "rsbuild dev --environment dev",
+    "format": "biome format --write",
+    "preview": "rsbuild preview",
+    "lint": "biome lint --error-on-warnings --write"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "2.8.2",
+    "@datadog/browser-logs": "5.23.3",
+    "@datadog/browser-rum": "5.23.3",
+    "@emotion/react": "11.13.0",
+    "@emotion/styled": "11.13.0",
+    "@tanstack/react-query": "5.51.21",
+    "@tanstack/react-query-devtools": "5.51.21",
+    "@tanstack/react-router": "1.46.7",
+    "@tanstack/router-devtools": "1.46.7",
+    "axios": "1.7.3",
+    "dayjs": "1.11.12",
+    "framer-motion": "11.3.21",
+    "js-cookie": "3.0.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-is": "18.3.1",
+    "shiki": "1.12.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "@module-federation/enhanced": "0.3.5",
+    "@rsbuild/core": "1.0.1-beta.10",
+    "@rsbuild/plugin-assets-retry": "1.0.1-beta.10",
+    "@rsbuild/plugin-basic-ssl": "1.1.0",
+    "@rsbuild/plugin-image-compress": "1.0.1",
+    "@rsbuild/plugin-react": "1.0.1-beta.10",
+    "@rsbuild/plugin-styled-components": "1.0.1-beta.10",
+    "@rsbuild/plugin-svgr": "1.0.1-beta.10",
+    "@rsbuild/plugin-type-check": "1.0.1-beta.10",
+    "@tanstack/router-plugin": "1.46.6",
+    "@types/js-cookie": "3.0.6",
+    "@types/node": "22.1.0",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "magic-string": "0.30.11",
+    "rsbuild-plugin-open-graph": "1.0.1",
+    "rsbuild-plugin-react-inspector": "0.0.13",
+    "typescript": "5.5.4"
+  }
+}

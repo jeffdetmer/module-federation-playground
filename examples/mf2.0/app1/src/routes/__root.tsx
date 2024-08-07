@@ -1,4 +1,5 @@
 import { Datadog } from '@/components/Datadog';
+import { NavBar } from '@/components/NavBar';
 import {
   ChakraBaseProvider,
   theme as chakraTheme,
@@ -51,6 +52,7 @@ const Route = createRootRoute({
       <Datadog>
         <QueryClientProvider client={queryClient}>
           <ChakraBaseProvider theme={theme}>
+            <NavBar />
             <Outlet />
           </ChakraBaseProvider>
           <ReactQueryDevtools initialIsOpen={false} />
